@@ -199,7 +199,7 @@ const FileUploader: React.FC = () => {
           <Card className="p-4 rounded-2xl shadow-md">
             <h2 className="text-lg font-semibold">Works Anywhere</h2>
             <p className="text-gray-600 mt-2">
-              Works on Windows, Mac, Linux, or mobile devices. Upload and
+              Works on Windows, Macs, Linux, or mobile devices. Upload and
               convert files easily.
             </p>
           </Card>
