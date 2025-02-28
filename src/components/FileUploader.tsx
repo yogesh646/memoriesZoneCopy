@@ -6,37 +6,50 @@ import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 import { MdMenu } from "react-icons/md";
 import { Input } from "@heroui/input";
 import { BsStars } from "react-icons/bs";
+import NavigationBar from "./NaviagtionBar";
 const FileUploader: React.FC = () => {
   const [imageName, setImageName] = useState("");
+  const [isClient, setIsClient] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
+  // const backy = [
+  //   {
+  //     img: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  //   },
+  //   {
+  //     img: "https://images.pexels.com/photos/169196/pexels-photo-169196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  //   },
+  //   {
+  //     img: "https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  //   },
+  //   {
+  //     img: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  //   },
+  //   {
+  //     img: "https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  //   },
+  //   {
+  //     img: "https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/007/284/159/new_large/Snapinsta.app_271668865_894242211287093_3125084565409294240_n_1080.jpg?1688631193",
+  //   },
+  //   {
+  //     img: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  //   },
+  //   {
+  //     img: "https://thumbs.dreamstime.com/b/indian-marriage-function-things-mangalyam-125749037.jpg",
+  //   },
+  //   {
+  //     img: "https://thumbs.dreamstime.com/b/south-indian-bride-thaali-mangalyam-groom-traditional-marriage-ceremony-109499425.jpg",
+  //   },
+  // ];
   const backy = [
-    {
-      img: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      img: "https://images.pexels.com/photos/169196/pexels-photo-169196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      img: "https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      img: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      img: "https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      img: "https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/007/284/159/new_large/Snapinsta.app_271668865_894242211287093_3125084565409294240_n_1080.jpg?1688631193",
-    },
-    {
-      img: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    },
-    {
-      img: "https://thumbs.dreamstime.com/b/indian-marriage-function-things-mangalyam-125749037.jpg",
-    },
-    {
-      img: "https://thumbs.dreamstime.com/b/south-indian-bride-thaali-mangalyam-groom-traditional-marriage-ceremony-109499425.jpg",
-    },
+    { img: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", span: "col-span-2 row-span-2" },
+    { img: "https://images.pexels.com/photos/169196/pexels-photo-169196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", span: "col-span-1 row-span-1" },
+    { img: "https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", span: "col-span-1 row-span-2" },
+    { img: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", span: "col-span-2 row-span-1" },
+    { img: "https://images.pexels.com/photos/220067/pexels-photo-220067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", span: "col-span-1 row-span-1" },
+    { img: "https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/007/284/159/new_large/Snapinsta.app_271668865_894242211287093_3125084565409294240_n_1080.jpg?1688631193", span: "col-span-1 row-span-2" },
+    { img: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", span: "col-span-2 row-span-1" },
+    { img: "https://thumbs.dreamstime.com/b/indian-marriage-function-things-mangalyam-125749037.jpg", span: "col-span-1 row-span-1" },
+    { img: "https://thumbs.dreamstime.com/b/south-indian-bride-thaali-mangalyam-groom-traditional-marriage-ceremony-109499425.jpg", span: "col-span-1 row-span-1" },
   ];
   const backys = [
     {
@@ -75,11 +88,12 @@ const FileUploader: React.FC = () => {
   };
 
   useEffect(() => {
-    // Example animation on load
+    setIsClient(true);
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
+       <div>{isClient ? <NavigationBar textcolor="ask"/> : "..."}</div>
       <div className="flex items-center justify-between mb-4">
         <BsStars size={24} color="black" />
         <div className="gap-1">
@@ -124,7 +138,10 @@ const FileUploader: React.FC = () => {
               {imageName && <p className="text-white">Selected: {imageName}</p>}
               <div className="text-white text-[12px] mt-2">
                 <div className="flex flex-col">
-                  <span className="text-white justify-center align-middle text-center"> Jump to Gallery</span>
+                  <span className="text-white justify-center align-middle text-center">
+                    {" "}
+                    Jump to Gallery
+                  </span>
                   <span
                     href="https://signup.example.com"
                     className="text-blue-800 justify-center align-middle text-center mt-2"
@@ -151,41 +168,42 @@ const FileUploader: React.FC = () => {
           </div>
         </Card>
 
-        <div className="mt-6 space-y-4">
-          <Card className="flex-1 p-1  h-[400px] border border-[#b8bbb8] mt-0 grid grid-cols-3 ml-0 gap-0">
+        <div className="mt-6 space-y-4 relative">
+          <Card className="flex-1 p-1 h-[400px] border border-[#b8bbb8] mt-0 grid grid-cols-3 ml-0 gap-1">
             {backy.slice(0, 10).map((image, index) => {
               const heights = [
                 "h-[100px]",
                 "h-[150px]",
-                "h-[120px] w-[110px]",
-                "h-[100px] ",
-                "h-[100px] ",
-                "h-[100px]  ",
-                "h-[100px] ",
-                "h-[80px] ",
-                "h-[106px] ",
+                "h-[120px]",
+                "h-[100px] absolute w-[100px] top-27 left-2",
+                "h-[100px] absolute w-[110px] top-40 left-30",
+                "h-[130px] absolute w-[100px] top-32 left-60",
+                "h-[180px] absolute w-[100px] top-53 left-2",
+                "h-[125px] absolute w-[230px] top-67 left-28",
+                "h-[0px] absolute w-[100px] top-80 left-25",
               ];
               return (
                 <Card
                   key={index}
-                  className={`rounded-xl w-[100px] ${heights[index]} border border-[#b8bbb8] bg-cover bg-center`}
+                  className={`rounded-xl w-full ${heights[index]} border border-[#b8bbb8] bg-cover bg-center`}
                   style={{ backgroundImage: `url(${image.img})` }}
                 />
               );
             })}
           </Card>
+
           <Card className="flex-1 p-1  h-[400px] border border-[#b8bbb8] mt-0 grid grid-cols-3 ml-0 gap-0">
             {backys.slice(0, 10).map((image, index) => {
               const heights = [
                 "h-[100px]",
-                "h-[100px]",
-                "h-[120px] w-[110px]",
-                "h-[100px]",
                 "h-[150px]",
-                "h-[100px]",
-                "h-[100px]",
-                "h-[80px]",
-                "h-[106px]",
+                "h-[120px]",
+                "h-[100px] absolute w-[100px] top-27 left-2",
+                "h-[100px] absolute w-[110px] top-40 left-30",
+                "h-[130px] absolute w-[100px] top-32 left-60",
+                "h-[180px] absolute w-[100px] top-53 left-2",
+                "h-[125px] absolute w-[230px] top-67 left-28",
+                "h-[0px] absolute w-[100px] top-80 left-25",
               ];
               return (
                 <Card
